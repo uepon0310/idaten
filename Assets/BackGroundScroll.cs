@@ -33,7 +33,7 @@ public class BackGroundScroll : MonoBehaviour
         scrollPropertyList.Add(prop);
 
         //Set Inital
-        float objectHeight = scrollPropertyList[scrollPropertyList.Count - 1].ObjectImage1.GetComponent<SpriteRenderer>().bounds.size.y;
+        float objectHeight = scrollPropertyList[scrollPropertyList.Count - 1].ObjectImage1.bounds.size.y;
         //        Vector4 objectHeight = scrollPropertyList[scrollPropertyList.Count - 1].ObjectImage1.border ;
         scrollPropertyList[scrollPropertyList.Count - 1].ObjectImage1.GetComponent<Renderer>().sortingOrder = scrollPropertyList[scrollPropertyList.Count - 1].Depth;
         scrollPropertyList[scrollPropertyList.Count - 1].ObjectImage1.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
@@ -77,7 +77,7 @@ public class BackGroundScroll : MonoBehaviour
 
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
-class ScrollProperty
+class ScrollProperty 
 {
     /*
         public string ObjectName;
@@ -87,16 +87,16 @@ class ScrollProperty
         public float Speed;
     */
     public string ObjectName;
-    public Sprite ObjectImage1;
-    public Sprite ObjectImage2;
+    public GameObject ObjectImage1;
+    public GameObject ObjectImage2;
     public int Depth;
     public float Speed;
 
-    //    public ScrollProperty(string ObjName, GameObject ObjImg1, GameObject ObjImg2, int ObjDepth, float ObjSpeed)
+    //public ScrollProperty(string ObjName, GameObject ObjImg1, GameObject ObjImg2, int ObjDepth, float ObjSpeed)
     public ScrollProperty(string ObjName, Sprite ObjImg1, Sprite ObjImg2, int ObjDepth, float ObjSpeed)
     {
         ObjectName = ObjName;
-        ObjectImage1 = ObjImg1;
+        ObjectImage1 = Instantiate(ObjImg1);
         ObjectImage2 = ObjImg2;
         Depth = ObjDepth;
         Speed = ObjSpeed;
